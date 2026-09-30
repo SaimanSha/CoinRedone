@@ -4,11 +4,11 @@ class Coin {
     private int tails;
     private double pTails;
 
-    public Coin(double pt) {pTails = pt;}
-    public Coin() {pTails = .5;}
-    public String getState() {return state;}
-    public int getHead() {return heads;} 
-    public int getTails() {return tails;}
+    public Coin(double pt)              {pTails = pt;}
+    public Coin()                       {pTails = .5;}
+    public String getState()            {return "Current State: " + state;}
+    public String getHeads()            {return "Heads: " + heads;} 
+    public String getTails()            {return "Tails: " + tails;}
     public void flip() { 
         if (Math.random() < pTails) {
             state = "tails"; 
@@ -24,18 +24,12 @@ class Coin {
             flips--;
         }
     }
-}
-
-public class CoinFlipper {
-    public static void main(String[] args) {
-        Coin penny = new Coin();
-        Coin riggedPenny = new Coin(.75); 
-        System.out.println(riggedPenny.getState()); 
-        penny.flip();
-        System.out.println(penny.getState());
-        riggedPenny.flip(99);
-        System.out.println("Heads: " + riggedPenny.getHead());
-        System.out.println("Tails: " + riggedPenny.getTails());
+    public void setPTails(double p)     {pTails = p;}
+    public void reset()                 {heads = 0; tails = 0;}
+    public void AutoFlipper(int flips) {
+        for (int i = 0; i < flips; i++) {
+            flip();
+        }
     }
 }
 
